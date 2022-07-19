@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+/* Font Weight: 400, 500, 600, 700 */
+
+/* Configuration générale */
+
+*, ::before, ::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    outline: none;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    background-color:#e5e5e5;
+}
+
+main{
+    background-color:white;
+    margin: 5rem;
+    padding: 5rem;
+}
+
+.main-heading{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+/* Navigation */
+
+.nav ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item{
+    width: 33.33%;
+    padding: 2rem;
+    border: 0.1rem solid grey;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color:rgb(212, 209, 209);
+}
+
+.nav-item:not(.active){
+    padding: 1rem;
+    align-self: flex-end;
+    background-color:white;
+}
+
+.searchSimplifiee, .searchDetaillee, .annuaireComplet{
+    background-color:rgb(212, 209, 209);
+    padding: 4rem 3rem;
+    border: 1px solid grey;
+    border-top-width: 0;
+    font-size: 1.5rem;
+}
+
+.searchDetaillee, .annuaireComplet{
+    display: none;
+}
+
+/* Recherche détailée */
+
+fieldset{
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+fieldset legend{
+    margin-left: 9rem;
+}
+
+fieldset div{
+    margin: 1rem 0 1.5rem 4rem;
+}
+
+.odgInput{
+    margin: 2rem 0 3rem;
+}
+
+.inputNumber{
+    margin: 0 0.6rem;
+}
+
+.search-button{
+    font-size: 1.6rem;
+    display: flex;
+    margin-left: auto;
+    background-color:#002a40;
+    border: none;
+    padding: 1rem 1.5rem;
+    color:white;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+/* Annuaire Complet */
+
+.annuaireComplet{
+    text-align: center;
+}
+
+.annuaireComplet a{
+    color: black;
+    font-weight: 700;
+    font-size: 2rem;
+    display: block;
+    margin-top: 4rem;
+    text-decoration: underline;
+}
+
+/* Affichage des résultats */
+
+.societeTable{
+    margin: 4rem 0;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.societeTable tr{
+    display: table-cell;
+    width: 50%;
+}
+
+.societeTable tr td, .societeTable tr th{
+    display: block;
+    padding: 0.7rem;
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+/* Footer */
+
+.footer-title-1{
+    font-size: 2.6rem;
+    text-align: right;
+    margin: 5rem 0 3rem;
+}
+
+.footer-title-2{
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: right;
+}

@@ -1,7 +1,3 @@
-// Create link : 
-// https://stackoverflow.com/questions/4772774/how-do-i-create-a-link-using-javascript
-
-
 const nomDomaineSelect = document.getElementById("nom-domaine-select")
 const rechercheDetailleeBtn = document.getElementById("rechercheDetailleeBtn")
 const rechercheSimplifieeBtn = document.getElementById("rechercheSimplifieeBtn")
@@ -13,7 +9,6 @@ rechercheSimplifieeBtn.addEventListener('click', () => {
     annuaireCompletBtn.classList.remove("active")
     document.querySelector(".searchSimplifiee").style.display = 'block'
     document.querySelector(".searchDetaillee").style.display = 'none'
-    document.querySelector(".annuaireComplet").style.display = 'none'
 
     document.querySelectorAll(".societeTable").forEach(table => table.remove())
 })
@@ -24,7 +19,6 @@ rechercheDetailleeBtn.addEventListener('click', () => {
     annuaireCompletBtn.classList.remove("active")
     document.querySelector(".searchDetaillee").style.display = 'block'
     document.querySelector(".searchSimplifiee").style.display = 'none'
-    document.querySelector(".annuaireComplet").style.display = 'none'
 
     document.querySelectorAll(".societeTable").forEach(table => table.remove())
 })

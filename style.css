@@ -104,17 +104,29 @@ fieldset div{
 
 /* Annuaire Complet */
 
-.annuaireComplet{
-    text-align: center;
+.underlined{
+    text-decoration: underline;
 }
 
-.annuaireComplet a{
-    color: black;
-    font-weight: 700;
-    font-size: 2rem;
-    display: block;
-    margin-top: 4rem;
-    text-decoration: underline;
+#annuaireCompletBtn{
+    padding: 0;
+    height: 4.2rem;
+}
+
+#annuaireCompletBtn form{
+    width: 100%;
+    height: 100%;
+}
+
+#annuaireCompletBtn input{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background-color:transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.5rem;
 }
 
 /* Affichage des résultats */

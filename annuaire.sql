@@ -1,53 +1,65 @@
-drop table if exists Societe_zonesGeographiques;
-drop table if exists zonesGeographiques;
-drop table if exists societe;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : dim. 24 juil. 2022 à 22:44
+-- Version du serveur : 10.4.24-MariaDB
+-- Version de PHP : 7.4.29
 
-create table societe(
-    id int primary key,
-    nom varchar(100) not null,
-    dateCreation date,
-    CA2019 varchar(100),
-    CA2020 varchar(100),
-    CA2021 varchar(100),
-    minFreelance int,
-    maxFreelance int,
-    zoneGeographique varchar(100),
-    domaine varchar(100),
-    sousDomaine varchar(100),
-    TJMmin int,
-    TJMmax int,
-    matchOffreDemande text,
-    assuranceRCPRO varchar(10),
-    paiementImmediat varchar(10),
-    assuranceSante varchar(10),
-    signatureElectronique varchar(10),
-    aideCreationEntreprise varchar(10),
-    accompagnementFreelanceSimulationRemuneration varchar(10),
-    accompagnementFreelanceCreationME varchar(10),
-    accompagnementFreelancePS varchar(10),
-    evaluationClients varchar(10),
-    modeContratPropose varchar(100),
-    siteWeb varchar(100)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-create table zonesGeographiques(
-    id int primary key,
-    valeur varchar(30)
-);
 
-create table Societe_zonesGeographiques(
-    id_societe int,
-    id_zoneGeographique int,
-    FOREIGN KEY(id_societe) REFERENCES societe(id),
-    FOREIGN KEY(id_zoneGeographique) REFERENCES zonesGeographiques(id)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-INSERT INTO zonesGeographiques VALUES
-(1, "Île-de-France"),
-(2, "Régions"),
-(3, "International");
+--
+-- Base de données : `annuaire`
+--
 
-INSERT INTO societe VALUES
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `societe`
+--
+
+CREATE TABLE `societe` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `dateCreation` date DEFAULT NULL,
+  `CA2019` varchar(100) DEFAULT NULL,
+  `CA2020` varchar(100) DEFAULT NULL,
+  `CA2021` varchar(100) DEFAULT NULL,
+  `minFreelance` int(11) DEFAULT NULL,
+  `maxFreelance` int(11) DEFAULT NULL,
+  `zoneGeographique` varchar(100) DEFAULT NULL,
+  `domaine` varchar(100) DEFAULT NULL,
+  `sousDomaine` varchar(100) DEFAULT NULL,
+  `TJMmin` int(11) DEFAULT NULL,
+  `TJMmax` int(11) DEFAULT NULL,
+  `matchOffreDemande` text DEFAULT NULL,
+  `assuranceRCPRO` varchar(10) DEFAULT NULL,
+  `paiementImmediat` varchar(10) DEFAULT NULL,
+  `assuranceSante` varchar(10) DEFAULT NULL,
+  `signatureElectronique` varchar(10) DEFAULT NULL,
+  `aideCreationEntreprise` varchar(10) DEFAULT NULL,
+  `accompagnementFreelanceSimulationRemuneration` varchar(10) DEFAULT NULL,
+  `accompagnementFreelanceCreationME` varchar(10) DEFAULT NULL,
+  `accompagnementFreelancePS` varchar(10) DEFAULT NULL,
+  `evaluationClients` varchar(10) DEFAULT NULL,
+  `modeContratPropose` varchar(100) DEFAULT NULL,
+  `siteWeb` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `societe`
+--
+
+INSERT INTO `societe` (`id`, `nom`, `dateCreation`, `CA2019`, `CA2020`, `CA2021`, `minFreelance`, `maxFreelance`, `zoneGeographique`, `domaine`, `sousDomaine`, `TJMmin`, `TJMmax`, `matchOffreDemande`, `assuranceRCPRO`, `paiementImmediat`, `assuranceSante`, `signatureElectronique`, `aideCreationEntreprise`, `accompagnementFreelanceSimulationRemuneration`, `accompagnementFreelanceCreationME`, `accompagnementFreelancePS`, `evaluationClients`, `modeContratPropose`, `siteWeb`) VALUES
 (1, '400 Partners', '2018-04-18', NULL, NULL, NULL, 100, 300, 'Ile de France et Régions', 'Management de Transition', NULL, 600, 5000, 'Commerciaux', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Facturation indirecte', 'www.400.partners/'),
 (2, '404 WORKS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Généraliste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.404works.com'),
 (3, '5 EUROS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Généraliste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.5euros.com'),
@@ -57,10 +69,10 @@ INSERT INTO societe VALUES
 (7, 'Adequancy', '2019-05-01', 'Entre 1 et 5M €', 'Entre 1 et 5M €', 'Entre 1 et 5M €', 50, 100, 'Ile de France et Régions', 'Management de Transition', NULL, 600, 5000, 'Via les réponses à annonces, IA, commerciaux et chargés de recherche', 'Oui', 'Non', 'Non', 'Oui', 'Non', 'Oui', 'Oui', 'Oui', 'Oui', 'Factuation indirecte', 'www.adequancy.com'),
 (8, 'AIRJOB', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Généraliste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.airjob.fr'),
 (9, 'AMAZING DEV', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'IT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.amazing.dev'),
-(10, 'BeAdvize', '2018-11-05', NULL, NULL, NULL, NULL, NULL, 'Ile de France', 'Généraliste', "Maîtrise d'ouvrage, développement Web, PMO", 600, 5000, 'Via une IA', 'Non', 'Non', 'Non', 'Oui', 'Non', 'Oui', 'Oui', 'Oui', 'Oui', 'Facturation indirecte', 'www.beadvize.fr'),
+(10, 'BeAdvize', '2018-11-05', NULL, NULL, NULL, NULL, NULL, 'Ile de France', 'Généraliste', 'Maîtrise d\'ouvrage, développement Web, PMO', 600, 5000, 'Via une IA', 'Non', 'Non', 'Non', 'Oui', 'Non', 'Oui', 'Oui', 'Oui', 'Oui', 'Facturation indirecte', 'www.beadvize.fr'),
 (11, 'BUBBLETING', '2016-03-01', NULL, NULL, NULL, 0, 50, 'Ile de France, Régions et International', 'IT / Développement logiciel / Data', 'DSI, Digital, Infrastructure', 300, 600, 'Via les réponses aux annonces, IA, commerciaux et chargés de recherche', 'Oui', 'Oui', 'Oui', 'Oui', 'Non', 'Non', 'Oui', 'Oui', 'Oui', 'Facturation indirecte', 'bubbleting.com'),
 (12, 'BUILD2B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BTP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.build2b.fr'),
-(13, 'Bulldoz', '2010-01-01', NULL, NULL, NULL, NULL, NULL, 'International', 'Rédaction', NULL, 100, 300, 'Via les réponses à des annonces', 0, 0, 0, 0, 0, 0, 0, 0, 1, 'Facturation indirecte', 'www.bulldoz.net'),
+(13, 'Bulldoz', '2010-01-01', NULL, NULL, NULL, NULL, NULL, 'International', 'Rédaction', NULL, 100, 300, 'Via les réponses à des annonces', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Oui', 'Facturation indirecte', 'www.bulldoz.net'),
 (14, 'CAPEXFI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Management de transition', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.capexfi.com'),
 (15, 'Castor Network', '2019-12-26', NULL, NULL, NULL, 100, 300, 'Ile de France et Régions', 'IT / Développement logiciel / Data', 'Ingénierie, IT, Logiciel', 600, 5000, 'Via les réponses aux annonces, IA, commerciaux et chargés de recherche', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Non', 'Factuation directe', 'www.castor-network.com'),
 (16, 'CHANGE ME UP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Data Management', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.changemeup.com'),
@@ -176,33 +188,61 @@ INSERT INTO societe VALUES
 (126, 'Yalink', '2021-02-15', NULL, NULL, 'Moins de 1M €', 30, 50, 'Régions', 'BTP', 'Industrie / Energies / Ferroviaire', 300, 600, 'Via une IA, commerciaux et chargés de recherche', 'Oui', 'Oui', 'Oui', 'Non', 'Non', 'Oui', 'Oui', 'Oui', 'Oui', 'Facturation directe et indirecte', 'www.yalink.fr'),
 (127, 'YouLoveWords', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Généraliste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www.youlovewords.com');
 
-INSERT INTO Societe_zonesGeographiques VALUES
-(1, 1), (1, 2),
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `societe_zonesgeographiques`
+--
+
+CREATE TABLE `societe_zonesgeographiques` (
+  `id_societe` int(11) DEFAULT NULL,
+  `id_zoneGeographique` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `societe_zonesgeographiques`
+--
+
+INSERT INTO `societe_zonesgeographiques` (`id_societe`, `id_zoneGeographique`) VALUES
+(1, 1),
+(1, 2),
 (2, NULL),
 (3, NULL),
 (4, NULL),
-(5, 1), (5, 2), (5, 3),
+(5, 1),
+(5, 2),
+(5, 3),
 (6, 2),
-(7, 1), (7, 2),
+(7, 1),
+(7, 2),
 (8, NULL),
 (9, NULL),
 (10, 1),
-(11, 1), (11, 2), (11, 3),
+(11, 1),
+(11, 2),
+(11, 3),
 (12, NULL),
 (13, 3),
 (14, NULL),
-(15, 1), (15, 2),
+(15, 1),
+(15, 2),
 (16, NULL),
 (17, 2),
-(18, 1), (18, 2), (18, 3),
+(18, 1),
+(18, 2),
+(18, 3),
 (19, NULL),
-(20, 1), (20, 2),
+(20, 1),
+(20, 2),
 (21, NULL),
-(22, 1), (22, 2),
+(22, 1),
+(22, 2),
 (23, NULL),
 (24, NULL),
 (25, NULL),
-(26, 1), (26, 2), (26, 3),
+(26, 1),
+(26, 2),
+(26, 3),
 (27, NULL),
 (28, NULL),
 (29, NULL),
@@ -221,8 +261,10 @@ INSERT INTO Societe_zonesGeographiques VALUES
 (41, NULL),
 (42, NULL),
 (43, NULL),
-(44, 1), (44, 2),
-(45, 1), (45, 2),
+(44, 1),
+(44, 2),
+(45, 1),
+(45, 2),
 (46, NULL),
 (47, NULL),
 (48, NULL),
@@ -242,10 +284,12 @@ INSERT INTO Societe_zonesGeographiques VALUES
 (62, NULL),
 (63, NULL),
 (64, NULL),
-(65, 1), (65, 2),
+(65, 1),
+(65, 2),
 (66, NULL),
 (67, NULL),
-(68, 1), (68, 2),
+(68, 1),
+(68, 2),
 (69, 1),
 (70, NULL),
 (71, NULL),
@@ -265,7 +309,8 @@ INSERT INTO Societe_zonesGeographiques VALUES
 (84, 3),
 (85, NULL),
 (86, NULL),
-(87, 1), (87, 2),
+(87, 1),
+(87, 2),
 (87, NULL),
 (88, NULL),
 (89, NULL),
@@ -276,12 +321,15 @@ INSERT INTO Societe_zonesGeographiques VALUES
 (94, NULL),
 (95, NULL),
 (96, NULL),
-(97, 2), (97, 3),
+(97, 2),
+(97, 3),
 (98, NULL),
 (99, 3),
 (100, NULL),
 (101, NULL),
-(102, 1), (102, 2), (102, 3),
+(102, 1),
+(102, 2),
+(102, 3),
 (103, NULL),
 (104, NULL),
 (105, NULL),
@@ -292,18 +340,80 @@ INSERT INTO Societe_zonesGeographiques VALUES
 (110, NULL),
 (111, NULL),
 (112, NULL),
-(113, 1), (113, 2),
+(113, 1),
+(113, 2),
 (114, NULL),
 (115, NULL),
-(116, 1), (116, 2),
+(116, 1),
+(116, 2),
 (117, NULL),
 (118, NULL),
 (119, NULL),
 (120, NULL),
 (121, NULL),
-(122, 1), (122, 2),
+(122, 1),
+(122, 2),
 (123, NULL),
 (124, NULL),
 (125, NULL),
 (126, 2),
 (127, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `zonesgeographiques`
+--
+
+CREATE TABLE `zonesgeographiques` (
+  `id` int(11) NOT NULL,
+  `valeur` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `zonesgeographiques`
+--
+
+INSERT INTO `zonesgeographiques` (`id`, `valeur`) VALUES
+(1, 'Île-de-France'),
+(2, 'Régions'),
+(3, 'International');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `societe`
+--
+ALTER TABLE `societe`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `societe_zonesgeographiques`
+--
+ALTER TABLE `societe_zonesgeographiques`
+  ADD KEY `id_societe` (`id_societe`),
+  ADD KEY `id_zoneGeographique` (`id_zoneGeographique`);
+
+--
+-- Index pour la table `zonesgeographiques`
+--
+ALTER TABLE `zonesgeographiques`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `societe_zonesgeographiques`
+--
+ALTER TABLE `societe_zonesgeographiques`
+  ADD CONSTRAINT `societe_zonesgeographiques_ibfk_1` FOREIGN KEY (`id_societe`) REFERENCES `societe` (`id`),
+  ADD CONSTRAINT `societe_zonesgeographiques_ibfk_2` FOREIGN KEY (`id_zoneGeographique`) REFERENCES `zonesgeographiques` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

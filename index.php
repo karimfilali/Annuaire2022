@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Annuaire</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <main>
         <h1 class="main-heading">Annuaire 2022 - Sites d'intermédiation commerciale</h1>
@@ -38,7 +36,7 @@
                 <option value="Industrie et services">Industrie et services</option>
                 <option value="IT">IT</option>
                 <option value="IT / Pharma / Engineering / Finance">IT / Pharma / Engineering / Finance</option>
-                <option value="IT / Développement logiciel / Data">IT / Développement logiciel / Data</option>
+                <option value="IT / Developpement logiciel / Data">IT / Développement logiciel / Data</option>
                 <option value="Management de transition">Management de transition</option>
                 <option value="Marketing">Marketing</option>
                 <option value="Rédaction">Rédaction</option>
@@ -99,10 +97,11 @@
             <input type="submit" value="Rechercher" class="search-button" name="submit-button-detaille">
         </form>
 
+        <!-- Affichage des résultats -->
         <div class="results">
             <?php
             if (isset($_POST['submit-button-simplifie'])) { # Si l'on fait une recherche simplifiée
-                $conn = new mysqli('localhost', 'root', '', 'annuaire');
+                $conn = new mysqli('ipaddress', 'username', 'password', 'databasename');
                 if ($conn->connect_error) {
                     die('Connection failed : ' . $conn -> connect_error);
                 }
@@ -139,11 +138,9 @@
                 } else echo "<table class='societeTable'> <tr><th>Aucun résultat</th></tr> </table>";
                 $conn->close();
             }
-            ?>
 
-            <?php
             if (isset($_POST['submit-button-detaille'])) { # Si l'on fait une recherche détaillée
-                $conn = new mysqli('localhost', 'root', '', 'annuaire');
+                $conn = new mysqli('ipaddress', 'username', 'password', 'databasename');
                 if ($conn->connect_error) {
                     die('Connection failed : ' . $conn -> connect_error);
                 }
@@ -203,11 +200,9 @@
                 } else echo "<table class='societeTable'> <tr><th>Aucun résultat</th></tr> </table>";
                 $conn->close();
             }
-            ?>
-
-            <?php
+            
             if (isset($_POST['show-annuaireComplet-input'])) { # Si l'on souhaite afficher l'annuaire complet
-                $conn = new mysqli('localhost', 'root', '', 'annuaire');
+                $conn = new mysqli('ipaddress', 'username', 'password', 'databasename');
                 if ($conn->connect_error) {
                     die('Connection failed : ' . $conn -> connect_error);
                 }

@@ -27,6 +27,10 @@ Dans le fichier .php, il faut quatre valeurs pour se connecter à une base de do
 - le nom de la base de données
 Ces quatre informations une fois obtenues sont à mettre à jour dans le fichier .php (lignes 104, 143 et 205). Il est aussi possible de créer des variables pour éviter les répétitions, ce que j'ai décidé de ne pas faire.
 
+(Information non sûre : L'IP se trouve dans l'onglet VPC de la console RDS)
+(Pour l'admit, il faut aller dans l'onglet configuration de la console RDS)
+(Pour le mot de passe, il faudrait demander un nouveau mot de passe pour la base de données : https://aws.amazon.com/fr/premiumsupport/knowledge-center/reset-master-user-password-rds/, https://serverfault.com/questions/950963/how-to-see-what-is-my-amazon-rds-password)
+
 En cas de questionnement sur le fonctionnement d'une fonction ou d'une option, merci de me contacter à l'adresse mail suivante : karim.filali@etu.u-paris.fr
 
 Merci
